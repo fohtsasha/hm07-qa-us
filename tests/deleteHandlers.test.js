@@ -18,10 +18,10 @@ test('Status should be 200 OK', async () => {
 
 test('Kit has been deleted', async () => {
     try {
-		const response = await fetch(`${config.API_URL}/your/endpoint`, {
+		const response = await fetch(`${config.API_URL}/api/v1/kits/7`, {
 			method: 'DELETE',
 		});
-const data = await json();
+const data = await response.json();
 expect(data.ok).toBe(true);
 	} catch (error) {
 		console.error(error);

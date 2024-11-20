@@ -18,7 +18,7 @@ test('Response body should have all types of deliveries', async () => {
 		const data = await response.json();
 		const expectedDeliveryTypes = ["Order and Go", "Speedy", "Fast Delivery", "Food Service"];
 
-		expectedDeliveryTypes = data.map(d => d.name);
+		const receivedDeliveryTypes = data.map(d => d.name);
 		expectedDeliveryTypes.forEach(type => {
 			expect(receivedDeliveryTypes).toContain(type);
 
