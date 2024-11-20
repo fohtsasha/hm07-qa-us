@@ -7,3 +7,4 @@ All of the tests were ran in VS Code and later pushed to GitHub using Source Con
 The coding language is JavaScript.
 
 Use \\ npx jest filename \\ for all the tests e.g. npx jest deleteHandlers.test.js (change the filename accordingly)
+Node,js and jest are used
