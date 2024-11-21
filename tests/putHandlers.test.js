@@ -8,14 +8,14 @@ const requestBody = {
 test('Status code should be 200', async () => {
 	let actualStatus;
     try {
-		const response = await fetch(`${config.API_URL}/api/v1/products/7`, {
+		const response = await fetch(`${config.API_URL}/api/v1/products/5`, {
 			method: 'PUT',
 			headers: {
 			'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(requestBody)
 		});
-		const actualStatus=response.status;
+	 actualStatus=response.status;
 
 	} catch (error) {
 		console.error(error);
@@ -27,16 +27,16 @@ test('Status code should be 200', async () => {
 test('Price has been changed', async () => {
 	let actualResponse;
     try {
-		const response = await fetch(`${config.API_URL}/api/v1/products/7`, {
+		const response = await fetch(`${config.API_URL}/api/v1/products/5`, {
 			method: 'PUT',
 			headers: {
 			'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(requestBody)
 		});
-		const data = response.data
+		actualResponse = await response.json();
 	}  catch (error) {
 		console.error(error);
 	}
-	expect(data).toBe("ok":true);
+	expect(actualResponse).toEqual({ok:true});
 });

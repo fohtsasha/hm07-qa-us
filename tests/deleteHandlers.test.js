@@ -6,7 +6,7 @@ test('Status should be 200 OK', async () => {
 		const response = await fetch(`${config.API_URL}/api/v1/kits/1`, {
 			method: 'DELETE',
 		});
-		const actualStatus = response.status;
+		actualStatus = response.status;
 
 	} catch (error) {
 		console.error(error);
@@ -20,9 +20,11 @@ test('Kit has been deleted', async () => {
 		const response = await fetch(`${config.API_URL}/api/v1/kits/6`, {
 			method: 'DELETE',
 		});
-		const data = await response.json();
+		data = await response.json();
 	} catch (error) {
 		console.error(error);
 	}
-	expect(data).toBe("ok":true);
+	expect(data).toEqual({
+        ok: true
+    });
 });

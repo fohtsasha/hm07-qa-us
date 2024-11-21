@@ -18,7 +18,7 @@ test('Status should be 200', async () => {
 			},
 			body: JSON.stringify(requestBody)
 		});
-		const actualStatus=response.status;
+		 actualStatus=response.status;
 		
 	} catch (error) {
 		console.error(error);
@@ -26,8 +26,9 @@ test('Status should be 200', async () => {
 });
 
 
+
 test('Speedy delivery should have all required fields ', async () => {
-	let expectedSpeedyDelivery
+	let expectedSpeedyDelivery;
     try {
 		const response = await fetch(`${config.API_URL}/speedy/v1/calculate`, {
 			method: 'POST',
@@ -36,18 +37,17 @@ test('Speedy delivery should have all required fields ', async () => {
 			},
 			body: JSON.stringify(requestBody)
 		});
-		const data = await response.json();
-const expectedSpeedyDelivery = ["name", "clientDeliveryCost","toBeDeliveredTime","hostDeliveryCost","isItPossibleToDeliver"]
-		});
-
-} catch (error) {
+		expectedSpeedyDelivery = await response.json();
+}
+ catch (error) {
 		console.error(error);
 	}
-	const receivedFields = Object.keys(data);
-		expectedSpeedyDelivery.forEach(field => {
-			expect(receivedFields).toContain(field);
+	expect(expectedSpeedyDelivery).toEqual({
+       "name": "Speedy",
+       "clientDeliveryCost": 7,
+       "toBeDeliveredTime": { "min": 30, "max": 35 },
+       "hostDeliveryCost": 7,
+       "isItPossibleToDeliver": true
+})
 
 });
-
-
-

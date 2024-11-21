@@ -17,12 +17,11 @@ test('Response body should have all types of deliveries', async () => {
 		response = await fetch(`${config.API_URL}/api/v1/couriers`);
 		const data = await response.json();
 		const expectedDeliveryTypes = ["Order and Go", "Speedy", "Fast Delivery", "Food Service"];
-
+		const receivedDeliveryTypes = data.map(d => d.name);
+		expectedDeliveryTypes.forEach(type => {
+			expect(receivedDeliveryTypes).toContain(type);
 		});
 	} catch (error) {
 		console.error(error);
 	}
-	const receivedDeliveryTypes = data.map(d => d.name);
-		expectedDeliveryTypes.forEach(type => {
-			expect(receivedDeliveryTypes).toContain(type);
 });
