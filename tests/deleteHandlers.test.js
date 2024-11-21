@@ -24,5 +24,5 @@ test('Kit has been deleted', async () => {
 	} catch (error) {
 		console.error(error);
 	}
-	expect(data.ok).toBe(true);
+	expect(data).toBe("ok":true);
 });
