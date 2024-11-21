@@ -1,29 +1,28 @@
 const config = require('../config');
 
 test('Status should be 200 OK', async () => {
-    try {
-		const response = await fetch(`${config.API_URL}/api/v1/kits/7`, {
+	let actualStatus;
+	try {
+		const response = await fetch(`${config.API_URL}/api/v1/kits/1`, {
 			method: 'DELETE',
 		});
-		const actualStatus=response.status;
-		const data = await response.json();
+		const actualStatus = response.status;
 
-		expect(actualStatus).toBe(200);
 	} catch (error) {
 		console.error(error);
-	}
+	} expect(actualStatus).toBe(200);
 });
 
 
-
 test('Kit has been deleted', async () => {
-    try {
-		const response = await fetch(`${config.API_URL}/api/v1/kits/7`, {
+	let data;
+	try {
+		const response = await fetch(`${config.API_URL}/api/v1/kits/6`, {
 			method: 'DELETE',
 		});
-const data = await response.json();
-expect(data.ok).toBe(true);
+		const data = await response.json();
 	} catch (error) {
 		console.error(error);
 	}
+	expect(data.ok).toBe(true);
 });
